@@ -24,7 +24,7 @@ WebDriver driver;
 		 String hostUrl="jdbc:mysql://10.0.1.86/tatoc";
 			String userName="tatocuser";
 			String password="tatoc01";
-			
+			                
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(hostUrl,userName,password);
 			java.sql.Statement stmt = conn.createStatement();

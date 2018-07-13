@@ -13,8 +13,8 @@ public class TestAdvancedCourse {
 	HoverMenu h;
 	OpenTatoc o;
 	QueryGatePage q;
+
 	@BeforeClass
-	@Test
 	public void launchBrowserAndOpenTatoc()
 	{
 	driver=new ChromeDriver();
@@ -23,8 +23,8 @@ public class TestAdvancedCourse {
 	}
 	
 
-    @Test(dependsOnMethods={"launchBrowserAndOpenTatoc"})
-	public void checkopenTatoc()
+    @Test
+	public void checkopenTatoc() throws InterruptedException
 	{
     	o=new OpenTatoc(driver);
     	o.openTatocPage();
@@ -36,7 +36,7 @@ public class TestAdvancedCourse {
     	h=new HoverMenu(driver);
     	h.clickOnMenu();
 	}
-  //  @Test(dependsOnMethods={"checkHoverMenu"})
+    @Test(dependsOnMethods={"checkHoverMenu"})
 	public void checkQueryGate() throws ClassNotFoundException, SQLException
 	{
     	q=new QueryGatePage(driver);

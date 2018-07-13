@@ -12,21 +12,24 @@ public class OpenTatoc {
 	JavascriptExecutor js;
 	public OpenTatoc(WebDriver driver)
 	{
-		driver=this.driver;
+		this.driver=driver;
 	}
 	public void openTatocPage()
 	{
 		
 		js=(JavascriptExecutor)driver;
+		//String heading = 	driver.findElement(By.className("page")).getText();
 		String heading = (String) js.executeScript("return document.querySelector('h1').textContent");
-		Assert.assertEquals(heading,"Test Automation Training Obstacle Course","Assertion Failed : Test Automation Training Obstacle Course Page is not opened");
+		System.out.println(heading);
+		Assert.assertTrue("Assertion Failed : Test Automation Training Obstacle Course Page is not opened",heading.contains("Test Automation Training Obstacle Course"));
 		Reporter.log("Assertion Passed : Test Automation Training Obstacle Course Page is successfully opened.");
 	}
-	public void clickOnAdvanced()
+	public void clickOnAdvanced() throws InterruptedException
 	{
-		driver.findElement(By.linkText("Advanced Course"));
+		driver.findElement(By.linkText("Advanced Course")).click();
+		Thread.sleep(3000);
 		String heading = (String) js.executeScript("return document.querySelector('h1').textContent");
-		Assert.assertEquals(heading,"Hover Menu","Assertion Failed : Hover Menu page is'nt opened.");
+		Assert.assertTrue("Assertion Failed : Hover Menu page is'nt opened.",heading.contains("Hover Menu"));
 		Reporter.log("Assertion Passed : Hover Menu page opened successfully.");
 
 	}
